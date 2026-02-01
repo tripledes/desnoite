@@ -1,0 +1,8 @@
+[emby]
+name=Emby
+baseurl=https://pkg.emby.media/rpm/stable/$basearch/os/
+enabled=1
+gpgcheck=1
+repo_gpgcheck=1
+gpgkey=https://pkg.emby.media/keys/emby-public.asc
+metadata_expire=6h

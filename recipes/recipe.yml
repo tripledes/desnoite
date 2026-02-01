@@ -1,30 +1,47 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # image will be published to ghcr.io/<user>/<name>
-name: template
+name: desnoite
 # description will be included in the image's metadata
-description: This is my personal OS image.
+description: Desnoite is a custom image for my personal use.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42 # latest is also supported if you want new updates ASAP
+base-image: quay.io/fedora-ostree-desktops/kinoite
+image-version: 43 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
 modules:
-  - type: files
-    files:
-      - source: system
-        destination: / # copies files/system/* (* means everything inside it) into your image's root folder /
+  - type: brew
+    nofile-limits: true # increase nofile limits
+    brew-analytics: false # disable telemetry
+
+  - type: bling
+    install:
+      - rpmfusion
 
   - type: dnf
     repos:
-      copr:
-        - atim/starship
+      files:
+        - emby.repo
+        - emby-beta.repo
     install:
       packages:
-        - micro
-        - starship
+        - fzf
+        - git
+        - git-lfs
+        - htop
+        - media.emby.client.beta.x86_64
+        - neovim
+        - ripgrep
+        - s-tui
+        - tmux
+        - zsh
+    group-install:
+      packages:
+        - development-tools
+        - rpm-development-tools
+        - container-management
     remove:
       packages:
         # example: removing firefox (in favor of the flatpak)
@@ -32,14 +49,61 @@ modules:
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
 
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode # don't add spaces or "Nerd Font" suffix
+        - Hack
+        - SourceCodePro
+        - Terminus
+        - JetBrainsMono
+        - NerdFontsSymbolsOnly
+
   - type: default-flatpaks
     configurations:
+      - notify: true
+        scope: system
+        repo:
+          title: Fedora (system)
+          url: oci+https://registry.fedoraproject.org
+          name: fedora
+        install:
+          - com.obsproject.Studio
+          - com.obsproject.Studio.Plugin.Browser
+          - com.obsproject.Studio.Plugin.DroidCam
+          - com.obsproject.Studio.Plugin.VLCVideo
+      - scope: user
+        repo:
+          title: Fedora (user)
+          url: oci+https://registry.fedoraproject.org
+          name: fedora
       - notify: true # Send notification after install/uninstall is finished (true/false)
         scope: system
+        repo:
+          title: Flathub (system)
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
+          - com.borgbase.Vorta
+          - com.obsproject.Studio.Plugin.Gstreamer
+          - com.obsproject.Studio.Plugin.GStreamerVaapi
+          - com.obsproject.Studio.Plugin.OBSVkCapture
+          - com.spotify.Client
+          - com.tomjwatson.Emote
+          - com.valvesoftware.Steam
+          - com.yubico.yubioath
+          - im.riot.Riot
+          - io.podman_desktop.PodmanDesktop
+          - md.obsidian.Obsidian
+          - net.lutris.Lutris
+          - org.fedoraproject.MediaWriter
+          - org.gimp.GIMP
+          - org.kde.kdenlive
+          - org.libreoffice.LibreOffice
           - org.mozilla.firefox
-          - org.gnome.Loupe
+          - org.signal.Signal
+          - org.videolan.VLC
       - scope: user # Also add Flathub user repo, but no user packages
+        repo:
+          title: Flathub (user)
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
