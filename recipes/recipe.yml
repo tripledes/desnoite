@@ -62,9 +62,9 @@ modules:
   - type: default-flatpaks
     configurations:
       - notify: true
-        scope: system
+        scope: user
         repo:
-          title: Fedora (system)
+          title: Fedora
           url: oci+https://registry.fedoraproject.org
           name: fedora
         install:
@@ -72,15 +72,10 @@ modules:
           - com.obsproject.Studio.Plugin.Browser
           - com.obsproject.Studio.Plugin.DroidCam
           - com.obsproject.Studio.Plugin.VLCVideo
-      - scope: user
-        repo:
-          title: Fedora (user)
-          url: oci+https://registry.fedoraproject.org
-          name: fedora
       - notify: true # Send notification after install/uninstall is finished (true/false)
-        scope: system
+        scope: user
         repo:
-          title: Flathub (system)
+          title: Flathub
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
           - com.borgbase.Vorta
@@ -102,8 +97,5 @@ modules:
           - org.mozilla.firefox
           - org.signal.Signal
           - org.videolan.VLC
-      - scope: user # Also add Flathub user repo, but no user packages
-        repo:
-          title: Flathub (user)
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
