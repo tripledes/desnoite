@@ -27,6 +27,7 @@ modules:
         - emby-beta.repo
     install:
       packages:
+        - alacritty
         - fzf
         - git
         - git-lfs
@@ -35,6 +36,7 @@ modules:
         - neovim
         - ripgrep
         - s-tui
+        - steam-devices
         - tmux
         - zsh
     group-install:
@@ -68,6 +70,9 @@ modules:
           url: oci+https://registry.fedoraproject.org
           name: fedora
         install:
+          - org.kde.elisa
+          - org.kde.kdenlive
+          - org.mozilla.firefox
           - com.obsproject.Studio
           - com.obsproject.Studio.Plugin.Browser
           - com.obsproject.Studio.Plugin.DroidCam
@@ -83,7 +88,6 @@ modules:
           - com.obsproject.Studio.Plugin.GStreamerVaapi
           - com.obsproject.Studio.Plugin.OBSVkCapture
           - com.spotify.Client
-          - com.tomjwatson.Emote
           - com.valvesoftware.Steam
           - com.yubico.yubioath
           - im.riot.Riot
@@ -92,10 +96,9 @@ modules:
           - net.lutris.Lutris
           - org.fedoraproject.MediaWriter
           - org.gimp.GIMP
-          - org.kde.kdenlive
           - org.libreoffice.LibreOffice
-          - org.mozilla.firefox
           - org.signal.Signal
+          - org.telegram.desktop
           - org.videolan.VLC
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
