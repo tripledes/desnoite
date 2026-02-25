@@ -37,8 +37,10 @@ modules:
         - fzf
         - git
         - git-lfs
+        - golang
         - htop
         - media.emby.client.beta.x86_64
+        - intel-media-driver
         - neovim
         - nix
         - ripgrep
