@@ -39,14 +39,22 @@ modules:
         - git-lfs
         - golang
         - htop
-        - media.emby.client.beta.x86_64
         - intel-media-driver
+        - kamoso
+        - media.emby.client.beta.x86_64
+        - mesa-va-drivers-freeworld
         - neovim
         - nix
+        - powertop
         - ripgrep
         - s-tui
         - steam-devices
+        - syncthing
+        - tlp
         - tmux
+        - unrar
+        - unzip
+        - wget
         - zsh
     group-install:
       packages:
@@ -69,6 +77,7 @@ modules:
         - Terminus
         - JetBrainsMono
         - NerdFontsSymbolsOnly
+        - UbuntuMono
 
   - type: default-flatpaks
     configurations:
