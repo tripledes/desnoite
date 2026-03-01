@@ -28,20 +28,25 @@ modules:
         - cursor.repo
         - emby.repo
         - emby-beta.repo
+        - google-cloud-sdk.repo
     install:
       packages:
         - alacritty
         - chezmoi
         - cursor
+        - direnv
         - distrobox
         - fzf
         - git
         - git-lfs
         - golang
+        - google-cloud-cli
         - htop
         - intel-media-driver
         - kamoso
-        - media.emby.client.beta.x86_64
+        - libxcrypt-compat
+        - lm_sensors
+        - media.emby.client.beta
         - mesa-va-drivers-freeworld
         - neovim
         - nix
@@ -67,7 +72,6 @@ modules:
         # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
-
   - type: fonts
     fonts:
       nerd-fonts:
@@ -78,45 +82,58 @@ modules:
         - JetBrainsMono
         - NerdFontsSymbolsOnly
         - UbuntuMono
-
   - type: default-flatpaks
     configurations:
-      - notify: true
+      - notify: false
+        scope: system
+        repo:
+          title: Fedora
+          url: oci+https://registry.fedoraproject.org
+          name: fedora
+        install:
+          - com.github.tchx84.Flatseal
+          - org.fedoraproject.MediaWriter
+          - org.gimp.GIMP
+          - org.kde.elisa
+          - org.keepassxc.KeePassXC
+          - org.libreoffice.LibreOffice
+          - org.mozilla.firefox
+          - org.videolan.VLC
+      - notify: false
         scope: user
         repo:
           title: Fedora
           url: oci+https://registry.fedoraproject.org
           name: fedora
         install:
-          - org.kde.elisa
           - org.kde.kdenlive
-          - org.mozilla.firefox
           - com.obsproject.Studio
           - com.obsproject.Studio.Plugin.Browser
           - com.obsproject.Studio.Plugin.DroidCam
           - com.obsproject.Studio.Plugin.VLCVideo
-      - notify: true # Send notification after install/uninstall is finished (true/false)
+      - notify: false
+        scope: system
+        repo:
+          title: Flathub
+        install:
+          - com.borgbase.Vorta
+          - com.yubico.yubioath
+          - im.riot.Riot
+          - io.github.flattool.Warehouse
+          - org.signal.Signal
+          - org.telegram.desktop
+      - notify: false # Send notification after install/uninstall is finished (true/false)
         scope: user
         repo:
           title: Flathub
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
-          - com.borgbase.Vorta
           - com.obsproject.Studio.Plugin.Gstreamer
           - com.obsproject.Studio.Plugin.GStreamerVaapi
           - com.obsproject.Studio.Plugin.OBSVkCapture
           - com.spotify.Client
           - com.valvesoftware.Steam
-          - com.yubico.yubioath
-          - im.riot.Riot
           - io.podman_desktop.PodmanDesktop
           - md.obsidian.Obsidian
           - net.lutris.Lutris
-          - org.fedoraproject.MediaWriter
-          - org.gimp.GIMP
-          - org.libreoffice.LibreOffice
-          - org.signal.Signal
-          - org.telegram.desktop
-          - org.videolan.VLC
-
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
