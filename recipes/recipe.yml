@@ -2,16 +2,17 @@
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
 # image will be published to ghcr.io/<user>/<name>
 name: desnoite
-# description will be included in the image's metadata
 description: Desnoite is a custom image for my personal use.
 
-# the base image to build on top of (FROM) and the version tag to use
 base-image: quay.io/fedora-ostree-desktops/kinoite
-image-version: 43 # latest is also supported if you want new updates ASAP
+image-version: 43
 
-# module configuration, executed in order
-# you can include multiple instances of the same module
 modules:
+  - type: files
+    files:
+      - source: system/etc
+        destination: /etc
+
   - type: brew
     nofile-limits: true
     brew-analytics: true
@@ -25,57 +26,74 @@ modules:
   - type: dnf
     repos:
       files:
-        - cursor.repo
         - emby.repo
         - emby-beta.repo
         - google-cloud-sdk.repo
+        - vscode.repo
+      nonfree: rpmfusion
     install:
       packages:
         - alacritty
         - chezmoi
-        - cursor
+        - code
         - direnv
         - distrobox
         - fzf
         - git
         - git-lfs
-        - golang
         - google-cloud-cli
         - htop
         - intel-media-driver
         - kamoso
+        - libvirt-daemon
+        - libvirt-nss
+        - libva-utils
         - libxcrypt-compat
         - lm_sensors
+        - lsof
         - media.emby.client.beta
         - mesa-va-drivers-freeworld
         - neovim
-        - nix
         - powertop
         - ripgrep
         - s-tui
         - steam-devices
+        - strace
         - syncthing
         - tlp
         - tmux
         - unrar
         - unzip
+        - virt-manager
+        - wireshark
         - wget
         - zsh
     group-install:
+      install-weak-deps: true
+      exclude:
+        - PackageKit-gstreamer-plugin
       packages:
         - development-tools
         - rpm-development-tools
         - container-management
+        - multimedia
     remove:
       packages:
-        # example: removing firefox (in favor of the flatpak)
-        # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
-        - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
+        - firefox-langpacks
+    replace:
+      - from-repo: rpmfusion-free
+        allow-erasing: true
+        packages:
+          - old: ffmpeg-free
+            new: ffmpeg
+          - old: mesa-va-drivers
+            new: mesa-va-drivers-freeworld
+
   - type: fonts
     fonts:
       nerd-fonts:
-        - FiraCode # don't add spaces or "Nerd Font" suffix
+        - FiraCode
         - Hack
         - SourceCodePro
         - Terminus
