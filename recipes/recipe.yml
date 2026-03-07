@@ -34,6 +34,7 @@ modules:
     install:
       packages:
         - alacritty
+        - arc-kde
         - chezmoi
         - code
         - direnv
@@ -103,56 +104,43 @@ modules:
   - type: default-flatpaks
     configurations:
       - notify: false
-        scope: system
+        scope: user
         repo:
           title: Fedora
           url: oci+https://registry.fedoraproject.org
           name: fedora
         install:
           - com.github.tchx84.Flatseal
+          - com.obsproject.Studio
+          - com.obsproject.Studio.Plugin.Browser
+          - com.obsproject.Studio.Plugin.DroidCam
+          - com.obsproject.Studio.Plugin.VLCVideo
           - org.fedoraproject.MediaWriter
           - org.gimp.GIMP
           - org.kde.elisa
           - org.keepassxc.KeePassXC
+          - org.kde.kdenlive
           - org.libreoffice.LibreOffice
           - org.mozilla.firefox
           - org.videolan.VLC
       - notify: false
         scope: user
         repo:
-          title: Fedora
-          url: oci+https://registry.fedoraproject.org
-          name: fedora
-        install:
-          - org.kde.kdenlive
-          - com.obsproject.Studio
-          - com.obsproject.Studio.Plugin.Browser
-          - com.obsproject.Studio.Plugin.DroidCam
-          - com.obsproject.Studio.Plugin.VLCVideo
-      - notify: false
-        scope: system
-        repo:
           title: Flathub
         install:
           - com.borgbase.Vorta
           - com.google.Chrome
-          - com.yubico.yubioath
-          - im.riot.Riot
-          - io.github.flattool.Warehouse
-          - org.signal.Signal
-          - org.telegram.desktop
-      - notify: false # Send notification after install/uninstall is finished (true/false)
-        scope: user
-        repo:
-          title: Flathub
-        # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
           - com.obsproject.Studio.Plugin.Gstreamer
           - com.obsproject.Studio.Plugin.GStreamerVaapi
           - com.obsproject.Studio.Plugin.OBSVkCapture
           - com.spotify.Client
           - com.valvesoftware.Steam
+          - com.yubico.yubioath
+          - im.riot.Riot
+          - io.github.flattool.Warehouse
           - io.podman_desktop.PodmanDesktop
           - md.obsidian.Obsidian
           - net.lutris.Lutris
-  - type: signing # this sets up the proper policy & signing files for signed images to work fully
+          - org.signal.Signal
+          - org.telegram.desktop
+  - type: signing
