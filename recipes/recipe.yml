@@ -135,6 +135,7 @@ modules:
           title: Flathub
         install:
           - com.borgbase.Vorta
+          - com.google.Chrome
           - com.yubico.yubioath
           - im.riot.Riot
           - io.github.flattool.Warehouse
