@@ -43,9 +43,10 @@ modules:
         - git
         - git-lfs
         - google-cloud-cli
+        - hplip
+        - hplip-gui
         - htop
         - intel-media-driver
-        - kamoso
         - libvirt-daemon
         - libvirt-nss
         - libva-utils
@@ -53,7 +54,7 @@ modules:
         - lm_sensors
         - lsof
         - media.emby.client.beta
-        - mesa-va-drivers-freeworld
+        - mediawriter
         - neovim
         - powertop
         - ripgrep
@@ -66,7 +67,6 @@ modules:
         - unrar
         - unzip
         - virt-manager
-        - wireshark
         - wget
         - zsh
     group-install:
@@ -115,14 +115,17 @@ modules:
           - com.obsproject.Studio.Plugin.Browser
           - com.obsproject.Studio.Plugin.DroidCam
           - com.obsproject.Studio.Plugin.VLCVideo
-          - org.fedoraproject.MediaWriter
+          - net.scribus.Scribus
           - org.gimp.GIMP
+          - org.inkscape.Inkscape
           - org.kde.elisa
-          - org.keepassxc.KeePassXC
+          - org.kde.kamoso
           - org.kde.kdenlive
+          - org.keepassxc.KeePassXC
           - org.libreoffice.LibreOffice
           - org.mozilla.firefox
           - org.videolan.VLC
+          - org.wireshark.Wireshark
       - notify: false
         scope: user
         repo:
