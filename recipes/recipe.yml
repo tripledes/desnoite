@@ -17,7 +17,7 @@ modules:
     nofile-limits: true
     brew-analytics: true
     auto-update: true
-    update-interval: '7d'
+    update-interval: "7d"
 
   - type: bling
     install:
@@ -39,6 +39,8 @@ modules:
         - code
         - direnv
         - distrobox
+        - fedora-packager
+        - fedpkg
         - fzf
         - git
         - git-lfs
@@ -55,7 +57,9 @@ modules:
         - lsof
         - media.emby.client.beta
         - mediawriter
+        - mock
         - neovim
+        - openrgb
         - powertop
         - ripgrep
         - s-tui
