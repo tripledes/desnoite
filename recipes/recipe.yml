@@ -59,6 +59,7 @@ modules:
         - mediawriter
         - mock
         - neovim
+        - okular
         - openrgb
         - powertop
         - ripgrep
