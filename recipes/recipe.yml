@@ -41,12 +41,11 @@ modules:
         - distrobox
         - fedora-packager
         - fedpkg
+        - foomatic-db-ppds
         - fzf
         - git
         - git-lfs
         - google-cloud-cli
-        - hplip
-        - hplip-gui
         - htop
         - intel-media-driver
         - libvirt-daemon
