@@ -45,6 +45,7 @@ modules:
         - fzf
         - git
         - git-lfs
+        - goose
         - google-cloud-cli
         - htop
         - intel-media-driver
@@ -59,6 +60,7 @@ modules:
         - mock
         - neovim
         - okular
+        - ollama
         - openrgb
         - powertop
         - ripgrep
