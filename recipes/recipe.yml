@@ -5,7 +5,7 @@ name: desnoite
 description: Desnoite is a custom image for my personal use.
 
 base-image: quay.io/fedora-ostree-desktops/kinoite
-image-version: 43
+image-version: 44
 
 modules:
   - type: files
@@ -69,6 +69,7 @@ modules:
         - strace
         - syncthing
         - tlp
+        - tlp-pd
         - tmux
         - unrar
         - unzip
@@ -77,6 +78,7 @@ modules:
         - zsh
     group-install:
       install-weak-deps: true
+      with-optional: true
       exclude:
         - PackageKit-gstreamer-plugin
       packages:
@@ -88,6 +90,8 @@ modules:
       packages:
         - firefox
         - firefox-langpacks
+        - tuned
+        - tuned-ppd
     replace:
       - from-repo: rpmfusion-free
         allow-erasing: true
@@ -152,4 +156,10 @@ modules:
           - net.lutris.Lutris
           - org.signal.Signal
           - org.telegram.desktop
+  - type: systemd
+    system:
+      enabled:
+        - libvirtd.socket
+        - tlp.service
+        - tlp-pd.service
   - type: signing
