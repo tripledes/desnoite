@@ -57,6 +57,7 @@ modules:
         - lsof
         - media.emby.client.beta
         - mediawriter
+        - mesa-va-drivers-freeworld
         - mock
         - neovim
         - okular
@@ -98,8 +99,6 @@ modules:
         packages:
           - old: ffmpeg-free
             new: ffmpeg
-          - old: mesa-va-drivers
-            new: mesa-va-drivers-freeworld
 
   - type: fonts
     fonts:
