@@ -1,0 +1,27 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
+# image will be published to ghcr.io/<user>/<name>
+name: desnoite-intel-laptop
+description: Desnoite is a custom image for Intel based laptops.
+
+base-image: quay.io/fedora-ostree-desktops/kinoite
+image-version: 44
+
+modules:
+  - from-file: common-base.yml
+  - type: dnf
+    install:
+      packages:
+        - intel-media-driver
+        - tlp
+        - tlp-pd
+    remove:
+      packages:
+        - tuned
+        - tuned-ppd
+  - type: systemd
+    system:
+      enabled:
+        - tlp.service
+        - tlp-pd.service
+  - type: signing

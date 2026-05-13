@@ -1,0 +1,38 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-list-v1.json
+modules:
+  - from-file: common-packages.yml
+  - from-file: common-flatpak.yml
+
+  - type: files
+    files:
+      - source: system/etc
+        destination: /etc
+
+  - type: brew
+    nofile-limits: true
+    brew-analytics: true
+    auto-update: true
+    update-interval: "7d"
+
+  - type: bling
+    install:
+      - rpmfusion
+
+  - type: fonts
+    fonts:
+      nerd-fonts:
+        - FiraCode
+        - Hack
+        - SourceCodePro
+        - Terminus
+        - JetBrainsMono
+        - NerdFontsSymbolsOnly
+        - UbuntuMono
+
+  - type: systemd
+    system:
+      enabled:
+        - libvirtd.socket
+
+  - type: signing

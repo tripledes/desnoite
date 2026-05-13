@@ -1,0 +1,63 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-v1.json
+type: dnf
+repos:
+  files:
+    - vscode.repo
+  nonfree: rpmfusion
+install:
+  packages:
+    - alacritty
+    - chezmoi
+    - code
+    - direnv
+    - distrobox
+    - fedora-packager
+    - fedpkg
+    - foomatic-db-ppds
+    - fzf
+    - git
+    - git-lfs
+    - goose
+    - htop
+    - libvirt-daemon
+    - libvirt-nss
+    - libva-utils
+    - libxcrypt-compat
+    - lm_sensors
+    - lsof
+    - mediawriter
+    - mock
+    - neovim
+    - okular
+    - powertop
+    - ripgrep
+    - s-tui
+    - strace
+    - syncthing
+    - tmux
+    - unrar
+    - unzip
+    - virt-manager
+    - wget
+    - zsh
+group-install:
+  install-weak-deps: true
+  with-optional: true
+  exclude:
+    - PackageKit-gstreamer-plugin
+  packages:
+    - development-tools
+    - rpm-development-tools
+    - container-management
+    - multimedia
+remove:
+  packages:
+    - firefox
+    - firefox-langpacks
+replace:
+  - from-repo: rpmfusion-free
+    allow-erasing: true
+    packages:
+      - old: ffmpeg-free
+        new: ffmpeg
