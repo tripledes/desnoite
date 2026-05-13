@@ -1,0 +1,45 @@
+---
+# yaml-language-server: $schema=https://schema.blue-build.org/module-v1.json
+type: default-flatpaks
+configurations:
+  - notify: false
+    scope: user
+    repo:
+      title: Fedora
+      url: oci+https://registry.fedoraproject.org
+      name: fedora
+    install:
+      - com.github.tchx84.Flatseal
+      - com.obsproject.Studio
+      - com.obsproject.Studio.Plugin.Browser
+      - com.obsproject.Studio.Plugin.DroidCam
+      - com.obsproject.Studio.Plugin.VLCVideo
+      - net.scribus.Scribus
+      - org.gimp.GIMP
+      - org.inkscape.Inkscape
+      - org.kde.elisa
+      - org.kde.kamoso
+      - org.kde.kdenlive
+      - org.keepassxc.KeePassXC
+      - org.libreoffice.LibreOffice
+      - org.mozilla.firefox
+      - org.videolan.VLC
+      - org.wireshark.Wireshark
+  - notify: false
+    scope: user
+    repo:
+      title: Flathub
+    install:
+      - com.borgbase.Vorta
+      - com.google.Chrome
+      - com.obsproject.Studio.Plugin.Gstreamer
+      - com.obsproject.Studio.Plugin.GStreamerVaapi
+      - com.obsproject.Studio.Plugin.OBSVkCapture
+      - com.spotify.Client
+      - com.yubico.yubioath
+      - im.riot.Riot
+      - io.github.flattool.Warehouse
+      - io.podman_desktop.PodmanDesktop
+      - md.obsidian.Obsidian
+      - org.signal.Signal
+      - org.telegram.desktop
