@@ -18,6 +18,7 @@ modules:
       packages:
         - media.emby.client.beta
         - mesa-va-drivers-freeworld
+        - nvtop
         - ollama
         - openrgb
         - steam-devices
