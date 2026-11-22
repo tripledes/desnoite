@@ -21,6 +21,7 @@ install:
     - git-lfs
     - goose
     - htop
+    - libavcodec-freeworld
     - libvirt-daemon
     - libvirt-nss
     - libva-utils
@@ -40,6 +41,13 @@ install:
     - unrar
     - unzip
     - virt-manager
+    - vlc
+    - vlc-plugin-ffmpeg
+    - vlc-plugin-kde
+    - vlc-plugin-pipewire
+    - vlc-plugin-samba
+    - vlc-plugins-extra
+    - vlc-plugins-freeworld
     - wget
     - zsh
 group-install:
