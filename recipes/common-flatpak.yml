@@ -23,7 +23,6 @@ configurations:
       - org.keepassxc.KeePassXC
       - org.libreoffice.LibreOffice
       - org.mozilla.firefox
-      - org.videolan.VLC
       - org.wireshark.Wireshark
   - notify: false
     scope: user
